@@ -94,21 +94,21 @@
                                         <td><input type='text' id='perusahaan1'></td>
                                         <td><input type='number' id='lama1'></td>
                                         <td><input type='text' id='posisi1'></td>
-                                        <td><input type="checkbox" id='cek1'>Check bila tidak ada</td>
+                                        <td><input type="checkbox" id='cek1' checked>Check bila tidak ada</td>
                                     </tr>
                                     <tr>
                                         <td></td>
                                         <td><input type='text' id='perusahaan2'></td>
                                         <td><input type='number' id='lama2'></td>
                                         <td><input type='text' id='posisi2'></td>
-                                        <td><input type="checkbox" id='cek2'>Check bila tidak ada</td>
+                                        <td><input type="checkbox" id='cek2' checked>Check bila tidak ada</td>
                                     </tr>
                                     <tr>
                                         <td></td>
                                         <td><input type='text' id='perusahaan3'></td>
                                         <td><input type='number' id='lama3'></td>
                                         <td><input type='text' id='posisi3'></td>
-                                        <td><input type="checkbox" id='cek3'>Check bila tidak ada</td>
+                                        <td><input type="checkbox" id='cek3' checked>Check bila tidak ada</td>
                                     </tr>
                                     
                             </table>
@@ -116,7 +116,7 @@
         </form>
 
         <p>
-            <input type= 'submit' onclick='fungsiKu()' value='SUBMIT'>
+            <button id= 'button' onclick='fungsiKu()'>SUBMIT</button>
         </p>
         <table id='output'>
             <tr>
@@ -126,86 +126,58 @@
 
         <script>
                 
-                var d = document.datadiri.sex.value; // document.formname.inputname.value
-                var kelamin = '';
-
+                
+            // var d = document.datadiri.sex.value; // document.formname.inputname.value
+            var kelamin = '';
+                
             function kelaminKu(ii) {
-
-                if (d == 'Pria') {
                     kelamin = ii
-                    return kelamin}
-                else {kelamin = ii
-                    return kelamin}
+
                     }
 
             function fungsiKu() {
 
-                // variabel data diri
-
-                var a = document.getElementById('nama').value;
-                var b = document.getElementById('tempat').value;
+                var tambahanData1 = '';
+                var tambahanData2 = '';
+                var tambahanData3 = '';
                 var c = document.getElementById('usia').value;
                 var bulanan = c.slice(0,2);
                 var tanggalan = c.slice(2,4);
                 var tahunan = c.slice(4,8);
-                var y = document.getElementById('telepon').value;
-                var z = document.getElementById('email').value;
 
-                // variabel sekolah
-                var e = document.getElementById('sd').value;
-                var f = document.getElementById('sd lulus').value;
-                var g = document.getElementById('smp').value;
-                var h = document.getElementById('smp lulus').value;
-                var i = document.getElementById('sma').value;
-                var j = document.getElementById('sma lulus').value;
-                var k = document.getElementById('s1').value;
-                var l = document.getElementById('s1 lulus').value;
+                
 
-                // variabel pekerjaan
-                var m = document.getElementById('perusahaan1').value;
-                var n = document.getElementById('lama1').value;
-                var o = document.getElementById('posisi1').value;
-                var p = document.getElementById('cek1').checked;
-                var q = document.getElementById('perusahaan2').value;
-                var r = document.getElementById('lama2').value;
-                var s = document.getElementById('posisi2').value;
-                var t = document.getElementById('cek2').checked;
-                var u = document.getElementById('perusahaan3').value;
-                var v = document.getElementById('lama3').value;
-                var w = document.getElementById('posisi3').value;
-                var x = document.getElementById('cek3').checked;
+                if(document.getElementById('cek1').checked==false) {
+                    tambahanData1 = ('<tr>' +
+                        '<td>' + document.getElementById('perusahaan1').value + '</td>' +
+                        '<td>' + document.getElementById('lama1').value + '</td>' +
+                        '<td>' + document.getElementById('posisi1').value + '</td>' +
+                        '</tr>')
 
-                var tambahanData1 = ''
-                var tambahanData2 = ''
-                var tambahanData3 = ''
-
-                if(p==false) {
-                    tambahanData1 = (
-                    +'<tr>' +
-                        '<td>' + m + '</td>' +
-                        '<td>' + n + '</td>' +
-                        '<td>' + o + '</td>' +
-                    '</tr>' )
                 }
-                else {tambahanData1 = ''}
-                if(t==false) {
-                    tambahanData2 = (
-                    +'<tr>' +
-                        '<td>' + q + '</td>' +
-                        '<td>' + r + '</td>' +
-                        '<td>' + s + '</td>' +
-                    '</tr>' )
+                else {tambahanData1 = ' ';}
+
+                if(document.getElementById('cek2').checked==false) {
+                    tambahanData2 = ('<tr>' +
+                        '<td>' + document.getElementById('perusahaan2').value + '</td>' +
+                        '<td>' + document.getElementById('lama2').value + '</td>' +
+                        '<td>' + document.getElementById('posisi2').value + '</td>' +
+                        '</tr>')
                 }
-                else {tambahanData2 = ''}
-                if(x==false) {
-                    tambahanData3 = (
-                    +'<tr>' +
-                        '<td>' + u + '</td>' +
-                        '<td>' + v + '</td>' +
-                        '<td>' + w + '</td>' +
-                    '</tr>' )
+                else {tambahanData2 = ' ';}
+
+                    if(document.getElementById('cek3').checked==false) {
+                    tambahanData3 = ('<tr>' +
+                        '<td>' + document.getElementById('perusahaan3').value + '</td>' +
+                        '<td>' + document.getElementById('lama3').value + '</td>' +
+                        '<td>' + document.getElementById('posisi3').value + '</td>' +
+                        '</tr>')
                 }
-                else {tambahanData3 = ''};
+                else {tambahanData3 = ' ';}
+
+                console.log(tambahanData1);
+                console.log(tambahanData2);
+                console.log(kelamin);
 
                 document.getElementById('output').innerHTML =
 
@@ -217,12 +189,12 @@
 
                 '<tr>' +
                     '<td>' + 'Nama:' + '</td>' +
-                    '<td>' + a + '</td>' +
+                    '<td>' + document.getElementById('nama').value + '</td>' +
                 '</tr>' +
 
                 '<tr>' +
                     '<td>' + 'Tempat/Tangal Lahir:' + '</td>' +
-                    '<td>' + b + ' , ' + tahunan + ' - ' + bulanan + ' - ' + tanggalan + '</td>' +
+                    '<td>' + document.getElementById('tempat').value + ' , ' + tahunan + ' - ' + bulanan + ' - ' + tanggalan + '</td>' +
                 '</tr>' +
 
                 '<tr>' +
@@ -232,12 +204,12 @@
                 
                 '<tr>' +
                     '<td>' + 'Telepon:' + '</td>' +
-                    '<td>' + y + '</td>' +
+                    '<td>' + document.getElementById('telepon').value + '</td>' +
                 '</tr>' +
 
                 '<tr>' +
                     '<td>' + 'Email:' + '</td>' +
-                    '<td>' + z + '</td>' +
+                    '<td>' + document.getElementById('email').value + '</td>' +
                 '</tr>' +
 
                 '<tr>' +
@@ -246,30 +218,30 @@
 
                 '<tr>' +
                     '<td>' + 'SD' + '</td>' +
-                    '<td>' + e + '</td>' +
+                    '<td>' + document.getElementById('sd').value + '</td>' +
                     '<td>' + 'Tahun lulus, ' + '</td>' +
-                    '<td>' + f + '</td>' +
+                    '<td>' + document.getElementById('sd lulus').value + '</td>' +
                 '</tr>' +
 
                 '<tr>' +
                     '<td>' + 'SMP' + '</td>' +
-                    '<td>' + g + '</td>' +
+                    '<td>' + document.getElementById('smp').value + '</td>' +
                     '<td>' + 'Tahun lulus, ' + '</td>' +
-                    '<td>' + h + '</td>' +
+                    '<td>' + document.getElementById('smp lulus').value + '</td>' +
                 '</tr>' +
 
                 '<tr>' +
                     '<td>' + 'SMA/K' + '</td>' +
-                    '<td>' + i + '</td>' +
+                    '<td>' + document.getElementById('sma').value + '</td>' +
                     '<td>' + 'Tahun lulus, ' + '</td>' +
-                    '<td>' + j + '</td>' +
+                    '<td>' + document.getElementById('sma lulus').value + '</td>' +
                 '</tr>' +
 
                 '<tr>' +
                     '<td>' + 'S1' + '</td>' +
-                    '<td>' + k + '</td>' +
+                    '<td>' + document.getElementById('s1').value + '</td>' +
                     '<td>' + 'Tahun lulus, ' + '</td>' +
-                    '<td>' + l + '</td>' +
+                    '<td>' + document.getElementById('s1 lulus').value + '</td>' +
                 '</tr>' 
 
                 +'<tr>' +
